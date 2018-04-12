@@ -1,0 +1,37 @@
+{
+  "name": "@amarajs/plugin-engine-server",
+  "version": "0.1.1",
+  "description": "Enables AmaraJS features in a server environment.",
+  "main": "dist/amara-plugin-engine-server.js",
+  "umd:main": "dist/amara-plugin-engine-server.umd.js",
+  "jsnext:main": "src/index.js",
+  "scripts": {
+    "build": "npm-run-all -p rollup:* -p minify:*",
+    "rollup:cjs": "rollup -c rollup.config.js -i src/index.js -f cjs -o dist/amara-plugin-engine-server.js",
+    "rollup:umd": "rollup -c rollup.config.js -i src/index.js -f umd -o dist/amara-plugin-engine-server.umd.js -n AmaraBundle",
+    "minify:cjs": "uglifyjs dist/amara-plugin-engine-server.js -cm toplevel -o dist/amara-plugin-engine-server.min.js --source-map filename=dist/amara-plugin-engine-server.min.js.map",
+    "minify:umd": "uglifyjs dist/amara-plugin-engine-server.umd.js -cm toplevel -o dist/amara-plugin-engine-server.umd.min.js --source-map filename=dist/amara-plugin-engine-server.umd.min.js.map"
+  },
+  "keywords": [
+    "amarajs",
+    "server",
+    "koa",
+    "express"
+  ],
+  "author": "Dan Barnes <amarajs.framework@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/amarajs/plugin-engine-server.git"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "devDependencies": {
+    "npm-run-all": "^4.1.2",
+    "rollup": "^0.57.1",
+    "rollup-plugin-buble": "^0.15.0",
+    "uglify-js": "^3.3.21"
+  }
+}
